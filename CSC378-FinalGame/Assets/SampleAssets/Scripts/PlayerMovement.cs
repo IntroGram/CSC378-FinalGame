@@ -150,6 +150,7 @@ public class PlayerMovement : MonoBehaviour
     private void wallJump() 
     {
         int facing = (playerSprite.flipX) ? 1 : -1 ;
-        rBody.AddForce(new Vector2 (200f*facing, 150f));
+        rBody.velocity = new Vector3(10f*facing, 8f, 0);
+
     }
 }
