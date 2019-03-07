@@ -1,33 +1,6 @@
-﻿/*
- * Copyright (c) 2017 Razeware LLC
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * Notwithstanding the foregoing, you may not use, copy, modify, merge, publish, 
- * distribute, sublicense, create a derivative work, and/or sell copies of the 
- * Software in any work that is designed, intended, or marketed for pedagogical or 
- * instructional purposes related to programming, coding, application development, 
- * or information technology.  Permission for such use, copying, modification,
- * merger, publication, distribution, sublicensing, creation of derivative works, 
- * or sale is expressly withheld.
- *    
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -44,6 +17,9 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private float jumpInput;
     private float horizontalInput;
+    private float jumpDelay = 0;
+
+    private bool touchingWall;
 
     void Awake()
     {
@@ -65,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         if (horizontalInput < 0f || horizontalInput > 0f)
         {
             animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
-            playerSprite.flipX = horizontalInput < 0f;
+            playerSprite.flipX = horizontalInput > 0f;
             if (isSwinging)
             {
                 animator.SetBool("IsSwinging", true);
@@ -94,6 +70,11 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 animator.SetBool("IsSwinging", false);
+                /*touchingWall = Physics2D.OverlapCircle(this.transform.position, 1.5f, LayerMask.GetMask("Wall"));
+                if (touchingWall && Input.GetButtonDown ("Jump")) 
+                {
+                    wallJump();
+                }*/
                 if (groundCheck)
                 {
                     var groundForce = speed*2f;
@@ -108,15 +89,42 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("Speed", 0f);
         }
 
+        if(jumpDelay != 0){
+            jumpDelay -= Time.deltaTime;
+        }
+        
         if (!isSwinging)
         {
-            if (!groundCheck) return;
-
-            isJumping = jumpInput > 0f;
-            if (isJumping)
+            // if (!groundCheck) return;
+            touchingWall = Physics2D.OverlapCircle(this.transform.position, 1.5f, LayerMask.GetMask("Wall"));
+            if (touchingWall && Input.GetButtonDown ("Jump") && jumpDelay == 0) 
             {
-                rBody.velocity = new Vector2(rBody.velocity.x, jumpSpeed);
+                wallJump();
+                jumpDelay = 0.25f;
+                return;
+            }else if(groundCheck){
+                isJumping = jumpInput > 0f;
+                if (isJumping)
+                {
+                    rBody.velocity = new Vector2(rBody.velocity.x, jumpSpeed);
+                }
             }
         }
+    }
+
+    /*
+    public void receiveDamage(float dmgTaken){
+        health -= dmgTaken;
+        healthBar.value = health;
+        if (health <= 0)
+        {
+            dead = true;
+        }
+    }
+    */
+
+    private void wallJump() 
+    {
+        rBody.AddForce(new Vector2 (400f*horizontalInput, 300f));
     }
 }

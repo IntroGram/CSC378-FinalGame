@@ -1,36 +1,8 @@
-﻿/*
- * Copyright (c) 2017 Razeware LLC
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * Notwithstanding the foregoing, you may not use, copy, modify, merge, publish, 
- * distribute, sublicense, create a derivative work, and/or sell copies of the 
- * Software in any work that is designed, intended, or marketed for pedagogical or 
- * instructional purposes related to programming, coding, application development, 
- * or information technology.  Permission for such use, copying, modification,
- * merger, publication, distribution, sublicensing, creation of derivative works, 
- * or sale is expressly withheld.
- *    
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using System.Linq;
 
 public class RopeSystem : MonoBehaviour
 {
@@ -60,12 +32,6 @@ public class RopeSystem : MonoBehaviour
         ropeHingeAnchorSprite = ropeHingeAnchor.GetComponent<SpriteRenderer>();
     }
 
-    /// <summary>
-    /// Figures out the closest Polygon collider vertex to a specified Raycast2D hit point in order to assist in 'rope wrapping'
-    /// </summary>
-    /// <param name="hit">The raycast2d hit</param>
-    /// <param name="polyCollider">the reference polygon collider 2D</param>
-    /// <returns></returns>
     private Vector2 GetClosestColliderPointFromRaycastHit(RaycastHit2D hit, PolygonCollider2D polyCollider)
     {
         // Transform polygoncolliderpoints to world space (default is local)
@@ -133,10 +99,6 @@ public class RopeSystem : MonoBehaviour
         HandleInput(aimDirection);
 	}
 
-    /// <summary>
-    /// Handles input within the RopeSystem component
-    /// </summary>
-    /// <param name="aimDirection">The current direction for aiming based on mouse position</param>
     private void HandleInput(Vector2 aimDirection)
     {
         if (Input.GetMouseButton(0))
@@ -173,9 +135,6 @@ public class RopeSystem : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Resets the rope in terms of gameplay, visual, and supporting variable values.
-    /// </summary>
     private void ResetRope()
     {
         ropeJoint.enabled = false;
@@ -189,10 +148,6 @@ public class RopeSystem : MonoBehaviour
         ropeHingeAnchorSprite.enabled = false;
     }
 
-    /// <summary>
-    /// Move the aiming crosshair based on aim angle
-    /// </summary>
-    /// <param name="aimAngle">The mouse aiming angle</param>
     private void SetCrosshairPosition(float aimAngle)
     {
         if (!crosshairSprite.enabled)
@@ -207,9 +162,6 @@ public class RopeSystem : MonoBehaviour
         crosshair.transform.position = crossHairPosition;
     }
 
-    /// <summary>
-    /// Retracts or extends the 'rope'
-    /// </summary>
     private void HandleRopeLength()
     {
         if (Input.GetAxis("Vertical") >= 1f && ropeAttached && !isColliding)
@@ -222,9 +174,6 @@ public class RopeSystem : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Handles updating of the rope hinge and anchor points based on objects the rope can wrap around. These must be PolygonCollider2D physics objects.
-    /// </summary>
     private void UpdateRopePositions()
     {
         if (ropeAttached)
