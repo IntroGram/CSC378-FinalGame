@@ -34,6 +34,9 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         var halfHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y;
         groundCheck = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - halfHeight - 0.04f), Vector2.down, 0.025f);
+        if(jumpDelay != 0){
+            jumpDelay -= Time.deltaTime;
+        }
     }
 
     void FixedUpdate()
@@ -89,10 +92,6 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("Speed", 0f);
         }
 
-        if(jumpDelay != 0){
-            jumpDelay -= Time.deltaTime;
-        }
-        
         if (!isSwinging)
         {
             // if (!groundCheck) return;
@@ -100,8 +99,7 @@ public class PlayerMovement : MonoBehaviour
             if (touchingWall && Input.GetButtonDown ("Jump") && jumpDelay == 0) 
             {
                 wallJump();
-                jumpDelay = 0.25f;
-                return;
+                //jumpDelay = 0.25f;
             }else if(groundCheck){
                 isJumping = jumpInput > 0f;
                 if (isJumping)
