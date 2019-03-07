@@ -110,6 +110,32 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground") && rBody.velocity.y == 0)
+        {
+            groundCheck = true;
+            //wallJumping = false;
+            //wallJumpNum = 0;
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            groundCheck = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            groundCheck = false;
+        }
+    }
+
     /*
     public void receiveDamage(float dmgTaken){
         health -= dmgTaken;
@@ -123,6 +149,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void wallJump() 
     {
-        rBody.AddForce(new Vector2 (400f*horizontalInput, 300f));
+        int facing = (playerSprite.flipX) ? 1 : -1 ;
+        rBody.AddForce(new Vector2 (200f*facing, 150f));
     }
 }
