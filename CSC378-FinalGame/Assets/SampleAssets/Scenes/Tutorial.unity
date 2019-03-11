@@ -1649,11 +1649,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1818346865}
   - component: {fileID: 1818346864}
+  - component: {fileID: 1818346859}
   - component: {fileID: 1818346863}
   - component: {fileID: 1818346862}
   - component: {fileID: 1818346861}
   - component: {fileID: 1818346860}
-  - component: {fileID: 1818346859}
   - component: {fileID: 1818346858}
   - component: {fileID: 1818346857}
   - component: {fileID: 1818346856}
@@ -1728,8 +1728,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swingForce: 4
-  speed: 3
-  jumpSpeed: 5
+  speed: 4
+  jumpSpeed: 8
   ropeHook: {x: 0, y: 0}
   isSwinging: 0
   groundCheck: 0
@@ -1880,7 +1880,7 @@ MonoBehaviour:
   ropeRenderer: {fileID: 1818346862}
   ropeLayerMask:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 1024
   climbSpeed: 3
   ropeHingeAnchor: {fileID: 1001112225}
   ropeJoint: {fileID: 1818346858}
