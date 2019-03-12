@@ -34,7 +34,6 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         var halfHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y;
         groundCheck = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - halfHeight - 0.04f), Vector2.down, 0.25f);
-        Debug.DrawLine(new Vector2(transform.position.x, transform.position.y - halfHeight - 0.04f), new Vector2(transform.position.x, transform.position.y - halfHeight - 0.04f) + new Vector2(0, -0.25f), Color.green);
         if(jumpDelay != 0){
             jumpDelay -= Time.deltaTime;
         }

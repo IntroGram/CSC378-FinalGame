@@ -1887,6 +1887,7 @@ MonoBehaviour:
   crosshair: {fileID: 1749206343}
   crosshairSprite: {fileID: 1749206342}
   playerMovement: {fileID: 1818346859}
+  ropeMaxCastDistance: 10
 --- !u!212 &1818346864
 SpriteRenderer:
   m_ObjectHideFlags: 0
