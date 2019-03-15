@@ -7,6 +7,7 @@ public class SpiderShotController : MonoBehaviour
     public GameObject player;
     public Vector3 normPosition;
     public float projSpeed;
+    public float damage = 15f;
 
     void Start()
     {
@@ -23,17 +24,14 @@ public class SpiderShotController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
-        /*
-        if (collision.gameObject != player && collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
-            var damage = Mathf.Lerp(0f, 100f, Mathf.InverseLerp (0f, this.maxVelocity, Mathf.Abs(gameObject.GetComponent<Rigidbody2D>().velocity.x)));
-            collision.gameObject.GetComponent<PlayerController>().receiveDamage(damage);
+            collision.gameObject.GetComponent<PlayerMovement>().receiveDamage(damage);
             Destroy(gameObject);
         }
-        else if(collision.gameObject.tag == "Platform" || collision.gameObject.tag == "Wall")
+        else if(collision.gameObject.tag != "Enemy")
         {
             Destroy(gameObject);
-        }*/
+        }
     }
 }
