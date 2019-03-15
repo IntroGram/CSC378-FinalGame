@@ -23,7 +23,7 @@ public class SpiderController : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, attackRange);
         Debug.DrawRay(transform.position, (player.transform.position - transform.position).normalized*attackRange , Color.red);
-        if(hit.collider != null && hit.rigidbody.gameObject == player && delayTime <= 0){
+        if(hit.rigidbody != null && hit.rigidbody.gameObject == player && delayTime <= 0){
             GameObject shot = Instantiate(spiderShotPrefab, new Vector3(fireLocation.transform.position.x, fireLocation.transform.position.y, fireLocation.transform.position.z), fireLocation.transform.rotation);
             delayTime = delayAttackTime;
         }
