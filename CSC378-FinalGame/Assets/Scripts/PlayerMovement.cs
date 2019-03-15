@@ -108,6 +108,8 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+        animator.SetBool("Jumping", rBody.velocity.y > 0 && isJumping && !isSwinging); // Might be a problem for double jumping?
+        animator.SetBool("Falling", rBody.velocity.y < 0 && !isSwinging);
     }
 
 /*    private void OnCollisionEnter2D(Collision2D collision)

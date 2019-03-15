@@ -10,6 +10,8 @@ TextureImporter:
     21300010: PlayerSprite2_5
     21300012: PlayerSprite2_6
     21300014: PlayerSprite2_7
+    21300016: PlayerSprite2_8
+    21300018: PlayerSprite2_9
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -157,10 +159,10 @@ TextureImporter:
       name: PlayerSprite2_2
       rect:
         serializedVersion: 2
-        x: 131
+        x: 191
         y: 64
-        width: 62
-        height: 57
+        width: 65
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,7 +184,7 @@ TextureImporter:
         width: 65
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -269,6 +271,46 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: badd9548f11246643ab8c1c6b10014f1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerSprite2_8
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 67
+        width: 85
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa549cbeb5ada0a4ba00762dcfd1ebd3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerSprite2_9
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 49
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 786bdac2af4ad8740aaa14a9b16ecd7e
       vertices: []
       indices: 
       edges: []
