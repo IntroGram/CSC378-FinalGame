@@ -12,5 +12,9 @@ public class Lose : MonoBehaviour
 	    {
 	        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	    }
+
+        if(this.GetComponent<PlayerMovement>().returnDead()){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
 	}
 }

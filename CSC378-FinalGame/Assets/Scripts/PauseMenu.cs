@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    /* Author: Connor French
+    /* 
      * Description: functionality for the pause menu
      */
     public Button quit;
@@ -20,7 +20,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /* Author: Connor French
+        /* 
          * Description: checks if the player tries to pause the game when it is acceptable to pause the game
          */
         /*if (GameController.instance.paused)
@@ -36,7 +36,7 @@ public class PauseMenu : MonoBehaviour
 
     /*public void returnToMenu()
     {
-        /* Author: Connor French
+        /*
          * Description: returns to the main menu from the pause menu
          *
         GameController.instance.speedyMusic = false;
@@ -49,7 +49,7 @@ public class PauseMenu : MonoBehaviour
 
     public void playAgain()
     {
-        /* Author: Connor French
+        /* 
          * Description: reloads current scene from beginning
          */
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

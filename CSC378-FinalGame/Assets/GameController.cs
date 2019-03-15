@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public static GameController instance;
     public AudioClip music;
     public float musicVol = 0.3f;
     public bool gameOver = false;
@@ -22,6 +21,11 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+
+    public void resetScene(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        gameOver = false;
+    }    
 }

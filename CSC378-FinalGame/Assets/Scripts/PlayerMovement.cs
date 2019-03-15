@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     public bool groundCheck;
     public LayerMask notPlayer;
 
+   // public GameObject GameController;
+
     private SpriteRenderer playerSprite;
     private Rigidbody2D rBody;
     private bool isJumping;
@@ -170,5 +172,9 @@ public class PlayerMovement : MonoBehaviour
         {
             isDead = true;
         }
+    }
+
+    public bool returnDead(){
+        return isDead;
     }
 }
