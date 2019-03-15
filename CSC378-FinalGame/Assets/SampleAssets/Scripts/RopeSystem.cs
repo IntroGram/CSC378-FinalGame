@@ -17,7 +17,7 @@ public class RopeSystem : MonoBehaviour
     private bool ropeAttached;
     private Vector2 playerPosition;
     private List<Vector2> ropePositions = new List<Vector2>();
-    private float ropeMaxCastDistance = 20f;
+    public float ropeMaxCastDistance = 20f;
     private Rigidbody2D ropeHingeAnchorRb;
     private bool distanceSet;
     private bool isColliding;

@@ -202,9 +202,9 @@ GameObject:
   - component: {fileID: 158520868}
   - component: {fileID: 158520867}
   - component: {fileID: 158520866}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Rock (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1305,9 +1305,9 @@ GameObject:
   - component: {fileID: 1482271056}
   - component: {fileID: 1482271055}
   - component: {fileID: 1482271054}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Rock (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1649,11 +1649,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1818346865}
   - component: {fileID: 1818346864}
+  - component: {fileID: 1818346859}
   - component: {fileID: 1818346863}
   - component: {fileID: 1818346862}
   - component: {fileID: 1818346861}
   - component: {fileID: 1818346860}
-  - component: {fileID: 1818346859}
   - component: {fileID: 1818346858}
   - component: {fileID: 1818346857}
   - component: {fileID: 1818346856}
@@ -1728,8 +1728,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swingForce: 4
-  speed: 3
-  jumpSpeed: 5
+  speed: 4
+  jumpSpeed: 6
   ropeHook: {x: 0, y: 0}
   isSwinging: 0
   groundCheck: 0
@@ -1880,13 +1880,14 @@ MonoBehaviour:
   ropeRenderer: {fileID: 1818346862}
   ropeLayerMask:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 1024
   climbSpeed: 3
   ropeHingeAnchor: {fileID: 1001112225}
   ropeJoint: {fileID: 1818346858}
   crosshair: {fileID: 1749206343}
   crosshairSprite: {fileID: 1749206342}
   playerMovement: {fileID: 1818346859}
+  ropeMaxCastDistance: 10
 --- !u!212 &1818346864
 SpriteRenderer:
   m_ObjectHideFlags: 0

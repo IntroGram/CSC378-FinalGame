@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         jumpInput = Input.GetAxis("Jump");
         horizontalInput = Input.GetAxis("Horizontal");
         var halfHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y;
-        groundCheck = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - halfHeight - 0.04f), Vector2.down, 0.025f);
+        groundCheck = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - halfHeight - 0.04f), Vector2.down, 0.25f);
         if(jumpDelay != 0){
             jumpDelay -= Time.deltaTime;
         }
@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
         if (!isSwinging)
         {
             // if (!groundCheck) return;
-            touchingWall = Physics2D.OverlapCircle(this.transform.position, 1.5f, LayerMask.GetMask("Wall"));
+            touchingWall = Physics2D.OverlapCircle(this.transform.position, 0.6f, LayerMask.GetMask("Wall"));
             if (touchingWall && Input.GetButtonDown ("Jump") && jumpDelay == 0) 
             {
                 wallJump();
@@ -110,9 +110,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+/*    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground") && rBody.velocity.y == 0)
+        if (collision.gameObject.CompareTag("Ground") && Mathf.Abs(rBody.velocity.y) <= 0.05)
         {
             groundCheck = true;
             //wallJumping = false;
@@ -122,18 +122,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || Mathf.Abs(rBody.velocity.y) <= 0.05)
         {
             groundCheck = true;
         }
-    }
+    }*/
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            groundCheck = false;
-        }
+    void OnDrawGizmosSelected(){ 
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(this.transform.position , 0.6f);
     }
 
     /*
