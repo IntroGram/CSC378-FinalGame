@@ -18,8 +18,8 @@ GameObject:
   - component: {fileID: 7383228846316386172}
   - component: {fileID: 7383228846316386175}
   - component: {fileID: 7383228846316386174}
-  m_Layer: 0
-  m_Name: Player 1
+  m_Layer: 11
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,6 +107,9 @@ MonoBehaviour:
   ropeHook: {x: 0, y: 0}
   isSwinging: 0
   groundCheck: 0
+  notPlayer:
+    serializedVersion: 2
+    m_Bits: 1841
 --- !u!114 &7383228846316386169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,7 +326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7383228846385526609}
   - component: {fileID: 7383228846385526608}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -403,7 +406,7 @@ GameObject:
   - component: {fileID: 7383228847787929778}
   - component: {fileID: 7383228847787929781}
   - component: {fileID: 7383228847787929780}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RopeHingeAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

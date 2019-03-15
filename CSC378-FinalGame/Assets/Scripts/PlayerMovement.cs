@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 ropeHook;
     public bool isSwinging;
     public bool groundCheck;
+    public LayerMask notPlayer;
+
     private SpriteRenderer playerSprite;
     private Rigidbody2D rBody;
     private bool isJumping;
@@ -33,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
         jumpInput = Input.GetAxis("Jump");
         horizontalInput = Input.GetAxis("Horizontal");
         var halfHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y;
-        groundCheck = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - halfHeight - 0.04f), Vector2.down, 0.25f);
+        groundCheck = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - halfHeight - 0.04f), Vector2.down, 0.25f, notPlayer);
         if(jumpDelay != 0){
             jumpDelay -= Time.deltaTime;
         }
@@ -108,8 +110,8 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-        animator.SetBool("Jumping", rBody.velocity.y > 0 && isJumping && !isSwinging); // Might be a problem for double jumping?
-        animator.SetBool("Falling", rBody.velocity.y < 0 && !isSwinging);
+        animator.SetBool("Jumping", rBody.velocity.y > 0.05 && isJumping && !isSwinging); // Might be a problem for double jumping?
+        animator.SetBool("Falling", rBody.velocity.y < -0.05 && !isSwinging);
     }
 
 /*    private void OnCollisionEnter2D(Collision2D collision)
