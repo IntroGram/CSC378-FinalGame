@@ -19,8 +19,21 @@ public class SpiderShotController : MonoBehaviour
     {
         // Move the projectile towards player's last position
         transform.position += normPosition * projSpeed * Time.deltaTime;
-        Vector3 dir = GetComponent<Rigidbody2D>().velocity;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward); 
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Destroy(gameObject);
+        /*
+        if (collision.gameObject != player && collision.gameObject.tag == "Player")
+        {
+            var damage = Mathf.Lerp(0f, 100f, Mathf.InverseLerp (0f, this.maxVelocity, Mathf.Abs(gameObject.GetComponent<Rigidbody2D>().velocity.x)));
+            collision.gameObject.GetComponent<PlayerController>().receiveDamage(damage);
+            Destroy(gameObject);
+        }
+        else if(collision.gameObject.tag == "Platform" || collision.gameObject.tag == "Wall")
+        {
+            Destroy(gameObject);
+        }*/
     }
 }
