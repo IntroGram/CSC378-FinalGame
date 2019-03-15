@@ -23,32 +23,29 @@ public class PauseMenu : MonoBehaviour
         /* Author: Connor French
          * Description: checks if the player tries to pause the game when it is acceptable to pause the game
          */
-        if (!GameControl.instance.gameOver && GameControl.instance.climbing)
+        /*if (GameController.instance.paused)
+        {*/
+            quit.gameObject.SetActive(true);
+            quit.Select();
+        /*}
+        else
         {
-            if (GameControl.instance.paused)
-            {
-                quit.gameObject.SetActive(true);
-                quit.Select();
-            }
-            else
-            {
-                quit.gameObject.SetActive(false);
-            }
-        }
+            quit.gameObject.SetActive(false);
+        }*/
     }
 
-    public void returnToMenu()
+    /*public void returnToMenu()
     {
         /* Author: Connor French
          * Description: returns to the main menu from the pause menu
-         */
-        GameControl.instance.speedyMusic = false;
+         *
+        GameController.instance.speedyMusic = false;
         Music.instance.music.clip = menuMusic;
         Music.instance.music.volume = 1;
         Music.instance.music.pitch = 1;
         Music.instance.music.Play();
         SceneManager.LoadScene("Main_Menu");
-    }
+    }*/
 
     public void playAgain()
     {
