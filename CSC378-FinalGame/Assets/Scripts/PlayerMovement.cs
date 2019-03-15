@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -23,11 +24,18 @@ public class PlayerMovement : MonoBehaviour
 
     private bool touchingWall;
 
+    public int initialHealth = 100;
+    public Slider healthBar;
+    private float health;
+    private bool isDead = false;
+
     void Awake()
     {
         playerSprite = GetComponent<SpriteRenderer>();
         rBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        health = initialHealth;
+        healthBar.value = health;
     }
 
     void Update()
@@ -153,5 +161,14 @@ public class PlayerMovement : MonoBehaviour
         int facing = (playerSprite.flipX) ? 1 : -1 ;
         rBody.velocity = new Vector3(10f*facing, 8f, 0);
 
+    }
+
+    public void receiveDamage(float dmgTaken){
+        health -= dmgTaken;
+        healthBar.value = health;
+        if (health <= 0)
+        {
+            isDead = true;
+        }
     }
 }
