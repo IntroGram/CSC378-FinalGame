@@ -6,6 +6,9 @@ public class WaspController : MonoBehaviour
 {
     public Transform PointToPatrol;
     public float speed = 1.0f;
+    public float damage = 25f;
+    public float knockbackX = 5000;
+    public float knockbackY = 100;
 
     private Vector3 pos1;
     private Vector3 pos2;
@@ -28,5 +31,13 @@ public class WaspController : MonoBehaviour
             waspSprite.flipX = false;
         }
         lastPos = this.transform.position.x;
+    }
+
+    void OnTriggerEnter2D(Collider2D other){
+        if (other.gameObject.tag == "Player")
+        {
+            other.gameObject.GetComponent<PlayerMovement>().receiveDamage(damage);
+            other.GetComponent<Rigidbody2D>().AddForce(new Vector2(knockbackX * this.transform.localScale.x, knockbackY));
+        }
     }
 }
