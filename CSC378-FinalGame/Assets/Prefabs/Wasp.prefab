@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3188418708218718296}
   - component: {fileID: 3188418708218718302}
   - component: {fileID: 3188418708218718303}
+  - component: {fileID: 5317845009277687766}
   m_Layer: 0
   m_Name: Wasp
   m_TagString: Untagged
@@ -115,6 +116,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PointToPatrol: {fileID: 3188418709298813046}
   speed: 1
+--- !u!61 &5317845009277687766
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3188418708218718299}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.06382066, y: -0.10029067}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.4485316, y: 0.61798924}
+    oldSize: {x: 1.24, y: 0.85}
+    newSize: {x: 1.1, y: 1.2900001}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.24, y: 0.85}
+  m_EdgeRadius: 0
 --- !u!1 &3188418709298813041
 GameObject:
   m_ObjectHideFlags: 0
