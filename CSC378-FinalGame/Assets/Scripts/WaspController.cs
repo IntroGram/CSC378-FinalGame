@@ -10,6 +10,8 @@ public class WaspController : MonoBehaviour
     public float knockbackX = 5000;
     public float knockbackY = 100;
 
+    public AudioSource wasp;
+
     private Vector3 pos1;
     private Vector3 pos2;
 
@@ -21,6 +23,8 @@ public class WaspController : MonoBehaviour
         pos2 = new Vector3(PointToPatrol.transform.position.x, PointToPatrol.transform.position.y, PointToPatrol.transform.position.z);
         waspSprite = GetComponent<SpriteRenderer>();
         lastPos = this.transform.position.x;
+        AudioSource[] aSources = GetComponents<AudioSource>();
+        wasp = aSources[0];
     }
 
     void Update() {
@@ -39,5 +43,15 @@ public class WaspController : MonoBehaviour
             other.gameObject.GetComponent<PlayerMovement>().receiveDamage(damage);
             other.GetComponent<Rigidbody2D>().AddForce(new Vector2(knockbackX * this.transform.localScale.x, knockbackY));
         }
+    }
+
+    void OnBecameVisible()
+    {
+        wasp.Play();
+    }
+
+    void OnBecameInvisible()
+    {
+        wasp.Stop();
     }
 }
