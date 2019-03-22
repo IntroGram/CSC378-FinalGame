@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
         jump = aSources[0];
         hit = aSources[1];
         jump.volume = 0.3f;
-        hit.volume = 0.3f;
+        hit.volume = 0.2f;
     }
 
     void Update()
@@ -176,7 +176,7 @@ public class PlayerMovement : MonoBehaviour
     {
         int facing = (playerSprite.flipX) ? 1 : -1 ;
         rBody.velocity = new Vector3(10f*facing, 8f, 0);
-
+        jump.Play();
     }
 
     public void receiveDamage(float dmgTaken){
