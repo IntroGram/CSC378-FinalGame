@@ -45,7 +45,12 @@ public class PlayerMovement : MonoBehaviour
         jumpInput = Input.GetAxis("Jump");
         horizontalInput = Input.GetAxis("Horizontal");
         var halfHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y;
-        groundCheck = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - halfHeight - 0.04f), Vector2.down, 0.25f, notPlayer);
+        groundCheck = Physics2D.Raycast(new Vector2(transform.position.x+0.22f, transform.position.y - halfHeight - 0.04f), Vector2.down, 0.25f, notPlayer);
+        if(!groundCheck){
+            groundCheck = Physics2D.Raycast(new Vector2(transform.position.x-0.22f, transform.position.y - halfHeight - 0.04f), Vector2.down, 0.25f, notPlayer);
+        }
+        //Debug.DrawLine(new Vector3(transform.position.x+0.22f, transform.position.y - halfHeight - 0.04f, 0), new Vector3(transform.position.x+0.22f, transform.position.y - halfHeight - 0.04f - 0.30f, 0), Color.white);
+        //Debug.DrawLine(new Vector3(transform.position.x-0.22f, transform.position.y - halfHeight - 0.04f, 0), new Vector3(transform.position.x-s0.22f, transform.position.y - halfHeight - 0.04f - 0.30f, 0), Color.white);
         if(jumpDelay != 0){
             jumpDelay -= Time.deltaTime;
         }
