@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
     public bool groundCheck;
     public LayerMask notPlayer;
 
+    public AudioSource jump;
+    public AudioSource hit;
+
    // public GameObject GameController;
 
     private SpriteRenderer playerSprite;
@@ -38,6 +41,11 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         health = initialHealth;
         healthBar.value = health;
+        AudioSource[] aSources = GetComponents<AudioSource>();
+        jump = aSources[0];
+        hit = aSources[1];
+        jump.volume = 0.3f;
+        hit.volume = 0.3f;
     }
 
     void Update()
@@ -121,6 +129,7 @@ public class PlayerMovement : MonoBehaviour
                 isJumping = jumpInput > 0f;
                 if (isJumping)
                 {
+                    jump.Play();
                     rBody.velocity = new Vector2(rBody.velocity.x, jumpSpeed);
                 }
             }
@@ -173,6 +182,7 @@ public class PlayerMovement : MonoBehaviour
     public void receiveDamage(float dmgTaken){
         health -= dmgTaken;
         healthBar.value = health;
+        hit.Play();
         if (health <= 0)
         {
             isDead = true;
