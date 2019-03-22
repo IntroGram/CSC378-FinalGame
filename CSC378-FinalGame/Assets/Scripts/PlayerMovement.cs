@@ -110,6 +110,9 @@ public class PlayerMovement : MonoBehaviour
                     var groundForce = speed*2f;
                     rBody.AddForce(new Vector2((horizontalInput*groundForce - rBody.velocity.x)*groundForce, 0));
                     rBody.velocity = new Vector2(rBody.velocity.x, rBody.velocity.y);
+                }else{
+                    var groundForce = speed*1.7f;
+                    rBody.AddForce(new Vector2((horizontalInput*groundForce - rBody.velocity.x)*groundForce, 0));
                 }
             }
         }
