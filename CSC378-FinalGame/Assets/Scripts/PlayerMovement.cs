@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
 
     public AudioSource jump;
     public AudioSource hit;
+    private float audioDelay = 0f;
+    private float audioDelaySet = 0.1f;
 
    // public GameObject GameController;
 
@@ -129,7 +131,12 @@ public class PlayerMovement : MonoBehaviour
                 isJumping = jumpInput > 0f;
                 if (isJumping)
                 {
-                    jump.Play();
+                    if(audioDelay <= 0){
+                        jump.Play();
+                        audioDelay = audioDelaySet;
+                    }else{
+                        audioDelay -= Time.deltaTime;
+                    }
                     rBody.velocity = new Vector2(rBody.velocity.x, jumpSpeed);
                 }
             }
